@@ -56,8 +56,6 @@ amazondf$Q2 <- ifelse(grepl("Q2",amazondf$Quarter), 1, 0)
 amazondf$Q3 <- ifelse(grepl("Q3",amazondf$Quarter), 1, 0)
 amazondf$Q4 <- ifelse(grepl("Q4",amazondf$Quarter), 1, 0)
 
-#-------Seasonality Regression----------
-
 
 
 amazonreg_2<-lm(Revenue ~ Trend + Q2 + Q3 + Q4, data = amazondf)
@@ -73,6 +71,7 @@ mape (amazondf$Revenue, amazon_pred_2)
 new_amz <- data.frame(Trend = c(33,34,35,36), Q2 = c(0,1,0,0), Q3 = c(0,0,1,0) , Q4 = c(0,0,0,1))
 predict(amazonreg_2, newdata = new_amz)
 
+#___________Quadratic Regression________________
 
 #read dataset into R
 amazon_newdf <- read.csv("amazon_web_services.csv")
